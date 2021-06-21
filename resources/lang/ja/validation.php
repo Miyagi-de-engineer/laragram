@@ -117,9 +117,9 @@ return [
     */
 
     'attributes' => [
-        'name' => '名前', //追記
-        'email' => 'メールアドレス', //追記
-        'password' => 'パスワード', //追記
+        'user_name' => '名前', //追記
+        'user_email' => 'メールアドレス', //追記
+        'user_password' => 'パスワード', //追記
     ],
 
 ];
