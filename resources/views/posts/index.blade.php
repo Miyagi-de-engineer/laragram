@@ -1,20 +1,32 @@
 @extends('layouts.app')
-
 @include('navbar')
+@include('footer')
 
 @section('content')
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    @foreach ($posts as $post)
+        <div class="col-md-8 col-md-2 mx-auto">
+            <div class="card-wrap">
+                <div class="card">
+                    <div class="card-header align-items-center d-flex">
+                        <a href="/users/{{ $post->user->id }}" class="no-text-decoration">
+                            @if ($post->user->profile_photo)
+                                <img src="{{ asset('storage/user_images/'.$post->user->profile_photo)}}" alt="" class="post-profile-icon round-img">
+                            @else
+                                <img src="{{ asset('/images/blank_profile.png')}}" alt="" class="post-profile0icon round-img">
+                            @endif
+                        </a>
+                        <a href="/users/{{ $post->user->id }}" title="{{ $post->user->name }}" class="black-color no-text-decoration">
+                            <strong>{{ $post->user->name }}</strong>
+                        </a>
+                    </div>
 
-<a href="{{ route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-    サインアウト <br>
-</a>
-<form action="{{ route('logout')}}" id="logout-form" method="post" style="display: none;">
-    @csrf
-</form>
+                    <a href="/users/{{ $post->user->id}}" class="">
+                        <img src="/storage/post_images/{{ $post->id }}.jpg" alt="" class="card-img-top">
+                    </a>
 
-<p>仮のトップページです</p>
-<!-- // ==========ここから追加する========== -->
-<a href="#" class="btn btn-primary">仮のボタンです</a>
-<!-- // ==========ここまで追加する========== -->
+                </div>
+            </div>
+        </div>
+    @endforeach
 
 @endsection

@@ -15,9 +15,18 @@ Route::get('/', 'PostsController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/home', 'PostsController@index');
+
+// 編集
 Route::get('/users/edit', 'UsersController@edit');
+// 更新
 Route::post('/users/update', 'UsersController@update');
-
+// 詳細
 Route::get('/users/{user_id}', 'UsersController@show');
+
+// 投稿画面表示
+Route::get('/posts/new', 'PostsController@new')->name('new');
+// 投稿新規処理
+Route::post('/posts', 'PostsController@store');
