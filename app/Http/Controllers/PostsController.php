@@ -54,4 +54,11 @@ class PostsController extends Controller
         // /にリダイレクト
         return redirect('/');
     }
+
+    public function destroy($post_id)
+    {
+        $post = Post::find($post_id);
+        $post->delete();
+        return redirect('/');
+    }
 }
