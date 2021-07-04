@@ -30,3 +30,5 @@ Route::get('/users/{user_id}', 'UsersController@show');
 Route::get('/posts/new', 'PostsController@new')->name('new');
 // 投稿新規処理
 Route::post('/posts', 'PostsController@store');
+// 投稿削除
+Route::get('/postsdelete/{post_id}', 'PostsController@destroy');
